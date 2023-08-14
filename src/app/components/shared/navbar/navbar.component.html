@@ -1,5 +1,19 @@
 <p-menubar class="borde" [model]="items">
-    <ng-template pTemplate="end">
-        <p-button label="Login" (onClick)="login()" styleClass="p-button-secondary p-button-text"></p-button>
+    
+    <ng-template pTemplate="end" *ngIf="usuario.estado">
+        <p-button label="Log in" (onClick)="login()" styleClass="p-button-secondary p-button-text"></p-button>
+    </ng-template>
+    
+    <ng-template pTemplate="end" *ngIf="!usuario.estado">
+        <p-menubar [model]="items" [style]="{ border: '0px !important' }">
+            <ng-template pTemplate="start">
+                <p-avatar 
+                    image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" 
+                    styleClass="mr-2" 
+                    size="large"
+                    shape="circle"
+                ></p-avatar>
+            </ng-template>
+        </p-menubar>
     </ng-template>
 </p-menubar>

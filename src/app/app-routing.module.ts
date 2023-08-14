@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 const routes: Routes = [
-  { path: '' , redirectTo: 'app', pathMatch: 'full'},
+  { path: '' , redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule) },
   { path: 'login', loadChildren: () => import('./components/auth/login/login.module').then(m => m.LoginModule) },
   { 
@@ -11,7 +11,7 @@ const routes: Routes = [
     loadChildren: () => import('./components/page/main/main.module').then(m => m.MainModule),
     ...canActivate( () => redirectUnauthorizedTo(['/home']) )
   },
-  { path: '**', redirectTo: 'app', pathMatch: 'full'}
+  { path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];
 
 @NgModule({
